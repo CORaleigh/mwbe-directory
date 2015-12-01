@@ -50,12 +50,14 @@
                 if (categories.length > 0) {
                     $("#subServices").removeProp('disabled');
                     $("#filterInput").removeProp('disabled');
+                    plugin.updateServiceList($("#subServices"), categories.toString());
+                    plugin.getVendorsByCategory(categories.toString());                    
                 } else {
                     $("#subServices").prop('disabled', true);
                     $("#filterInput").prop('disabled', true);
+                    $("#csvLink").hide();
+                    $("#vendorDiv").empty();
                 }
-                plugin.updateServiceList($("#subServices"), categories.toString());
-                plugin.getVendorsByCategory(categories.toString());
             });
         },
         createServiceList: function (element) {
