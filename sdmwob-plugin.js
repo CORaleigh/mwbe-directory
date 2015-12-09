@@ -29,7 +29,7 @@
             var plugin = this;
             this.createCategoryButtons(this.element);
             this.createServiceList(this.element);
-            $(this.element).append('<input class="form-control" placeholder="Filter by Vendor Name" id="filterInput" style="margin-bottom: 1em" disabled/><form id="form" class="left"  action="https://maps.raleighnc.gov/mwbe/exportcsv.php" method="POST"></form><form id="formAll" class="left"  action="https://maps.raleighnc.gov/mwbe/exportcsv.php" method="POST"></form><a id="csvLink" href="#" type="submit">Export Listed <span class="icon-file-excel"></span></a><a id="csvLinkAll" href="#" type="submit">Export All <span class="icon-file-excel"></span></a><div id="vendorDiv" style="margin-top:0.5em;max-height:1000px;overflow:auto;"></div>');
+            $(this.element).append('<div style="margin: 1em"><input class="form-control" placeholder="Filter by Vendor Name" id="filterInput" style="margin-bottom: 1em" disabled/><form id="form" class="left"  action="https://maps.raleighnc.gov/php/sdmwob/scripts/exportcsv.php" method="POST"></form><form id="formAll" class="left"  action="https://maps.raleighnc.gov/php/sdmwob/scripts/exportcsv.php" method="POST"></form><div style="margin-bottom: 1em"><a id="csvLink" href="#" type="submit">Export Listed <span class="icon-file-excel"></span></a><a id="csvLinkAll" href="#" type="submit">Export All <span class="icon-file-excel"></span></a></div><div id="vendorDiv" style="max-height:1000px;overflow:auto;"></div></div>');
             this.createFilter($("#filterInput"));
             $("#csvLink").hide();
             document.getElementById("csvLink").onclick = function() {
@@ -41,7 +41,7 @@
         },
         createCategoryButtons: function (element) {
             var plugin = this;
-            $(element).append('<label style="margin-bottom: 0.5em">Select A Business Category</label><br/><div class="btn-group" data-toggle="buttons" style="background-color: none; color: #3c71ce;"><label class="btn btn-primary"><input type="checkbox">Construction</label><label class="btn btn-primary"><input type="checkbox" autocomplete="off">Goods and Services</label><label class="btn btn-primary"><input type="checkbox" autocomplete="off">Professional</label</div>');
+            $(element).append('<div style="margin: 1em"><label style="margin-bottom: 0.5em">Select A Business Category</label><br/><div class="btn-group" data-toggle="buttons" style="background-color: none; color: #3c71ce;"><label class="btn btn-primary"><input type="checkbox">Construction</label><label class="btn btn-primary"><input type="checkbox" autocomplete="off">Goods and Services</label><label class="btn btn-primary"><input type="checkbox" autocomplete="off">Professional</label</div></div>');
             $('.btn-group input').change(function (e) {
                 var categories = [];
                 $('.btn-group input:checked').each(function (i, service) {
@@ -62,7 +62,7 @@
         },
         createServiceList: function (element) {
             var plugin = this;
-            $(element).append('<br/><label style="margin: 0.5em 0 0.5em 0">Select A Service</label><select id="subServices" title="Select A Service" class="form-control" style="margin-bottom: 1em;" disabled><option value="prompt">All Services</option></select>');
+            $(element).append('<div style="margin: 1em"><label style="margin-bottom: 0.5em">Select A Service</label><select id="subServices" class="form-control" disabled><option value="prompt">All Services</option></select></div>');
             $("#subServices").on('change', function (e) {
                 if ($("#subServices option:selected").val() === "prompt") {
                     var categories = [];
@@ -139,8 +139,8 @@
                 sList = null;
             if (vendors) {
                 $.each(vendors, function (i, vendor) {
-                    list = $('<ul class="left half nolist bio"></ul>').appendTo(div);
-                    sList = $('<ul class="left half" style="margin-bottom: 1em;margin-top: 1em"></ul>').appendTo(div);
+                    list = $('<ul class="left half nolist"></ul>').appendTo(div);
+                    sList = $('<ul class="left half nolist"></ul>').appendTo(div);
                     if (vendor.Company) {
                         list.append('<li><strong>' + vendor.Company + '</strong></li>');
                     }
