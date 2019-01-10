@@ -106,8 +106,10 @@
         },
         getVendorsByService: function (service) {
             var plugin = this;
-            $.ajax({url: 'https://maps.raleighnc.gov/mwbe/vendors.php?callback=?', dataType: 'json', data: {service: service}}).done(function (data) {
-                plugin.createList(data);
+           // $.ajax({url: 'https://maps.raleighnc.gov/mwbe/vendors.php?callback=?', dataType: 'json', data: {service: service}}).done(function (data) {
+          $.ajax({url: 'https://services.arcgis.com/v400IkDOw1ad7Yad/arcgis/rest/services/NC_Certified_Minority_and_Women_Owned_Businesses_Directory/FeatureServer/0/query', dataType: 'json', data: {where: "services in '"+service+"'",f:"json"}}).done(function (data) {
+
+            plugin.createList(data);
                 vendors = data;
             });
         },
