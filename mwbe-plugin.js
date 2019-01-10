@@ -68,7 +68,7 @@
             });
             $.ajax({url: 'http://gisdevarc1/sdmwob/subservices.php?callback=?', dataType: 'json'}).done(function (data) {
                 $.each(data, function (i, item) {
-                    $("#subServices").append('<option value="'+item['Service ID']+'">'+item['Service']+'</option>');
+                    $("#subServices").append('<option value="'+item['Service']+'">'+item['Service']+'</option>');
                 });
             });
         },
